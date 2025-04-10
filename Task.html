@@ -7,20 +7,635 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/normalize.css"> 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/media.css">
+    <style>
+        *::before,
+        *::after {
+        box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: #212529;
+            background: #fff;
+            margin: 0;
+            padding: 0;     
+            line-height: 30px        
+        }
+
+        .container {
+            max-width: 1480px;
+            margin: 0 auto;
+        }
+
+        .Btn {
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-family: inherit;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            background-color:#4F9CF9;
+            color: #fff;
+            padding: 20px 40px;
+            margin-top: 50px;
+        }
+        
+        .Btn::after {
+            content: '';
+            display: inline-block;
+            width: 10px; 
+            height: 10px; 
+            background: url('/assets/ArrowRight.png') center center no-repeat;
+            margin-left: 10px;
+        }
+
+        .Btn:hover {
+            background-color: #3878c7;
+        }
+
+        .header {
+            padding: 16px 0;
+            background-color: #043873;
+        }
+
+        .headerInner {
+            display: flex;
+            align-items: center;
+        }
+
+        .headNav {
+            margin-left: auto;
+        }
+
+        .headNavList {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        .headNavLink {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0;
+            margin-right: 32px;
+            display: flex;
+            align-items: center;
+        }
+
+        .headNavLink::after {
+            content: '';
+            display: inline-block;
+            width: 10px; 
+            height: 5px; 
+            background: url('/assets/ArrowDown.png') center center no-repeat;
+            margin-left: 10px;
+        }
+
+        .headBtnGroup {
+            display: flex;
+            align-items: center;
+        }
+
+        .headBtnLogin {
+            background-color: #FFE492;
+            color: #000;
+            padding: 18px 40px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-family: inherit;
+            font-size: 18px;
+            margin-left: 24px;
+        }
+
+        .headBtnLogin:hover {
+            background-color: #FFD700;
+        }
+
+        .headBtnTry {
+            padding: 18px 34px;
+            margin-left: 24px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-family: inherit;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            background-color:#4F9CF9;
+            color: #fff;
+        }
+        
+        .headBtnTry::after {
+            content: '';
+            display: inline-block;
+            width: 10px; 
+            height: 10px; 
+            background: url('/assets/ArrowRight.png') center center no-repeat;
+            margin-left: 10px;
+        }
+
+        .whitepaceBlock {
+            background-color: #043873;
+            color: #fff;
+            background-image: url('/assets/WhitepaceBg.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 547px;
+            padding: 140px 0;
+        }
+
+        .whitepace {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .whitepaceHead {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 100%;
+        }
+
+        .whitepaceBtn {
+            padding: 20px;
+            margin-top:50px;
+        }
+
+        .whitepaceImg {
+            height: 549px;
+            width: 824px;
+        }
+
+        .managementBlock {
+            position: relative;
+            padding: 140px 0;
+            z-index: 1;
+        }
+
+        .managementBlock::before {
+            content: '';
+            position: absolute;
+            top: 80px; left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/assets/ManagementBg.png');
+            background-position: center left;
+            background-repeat: no-repeat;
+            background-size: 603px 449px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .management {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sectionHead {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .managementHead::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -20px;
+            width: 70%;
+            height: 35px;
+            background-image: url('/assets/underline.png');
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+            display: block;
+        }
+
+        .managementInfo {
+            max-width: 672px;
+        }
+
+        .managementInfoBtn {
+            padding: 20px 40px;
+            margin-top: 50px;
+        }
+
+        .managementImg {
+            max-width: 748px;
+            max-height: 547px;
+        }
+
+        .togetherBlock {
+            padding-bottom: 140px;
+        }
+
+        .together {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .togetherImg {
+            max-width: 710px;
+            min-height: 661px;
+        }
+
+        .togetherInfo {
+            max-width: 670px;
+        }
+        
+        .togetherHead::before {
+            content: '';
+            position: absolute;
+            left: 24%;
+            bottom: -20px;
+            width: 40%;
+            height: 35px;
+            background-image: url('/assets/underline.png');
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+            display: block;
+        }
+
+        .togetherBtn {
+            padding: 20px 40px;
+            margin-top: 50px;
+        }
+
+        .extensionBlock {
+            background-color: #043873;
+            color: #fff;
+            padding: 140px 0;
+        }
+
+        .extension {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .extensionInfo {
+            max-width: 697px;
+        }
+  
+        .extensionHead::before {
+            content: '';
+            position: absolute;
+            right: 85px; bottom: -20px;
+            width: 50%;
+            height: 35px;
+            background-image: url('/assets/Underline.png');
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+            display: block;
+        }
+
+        .extensionImg {
+            max-width: 686px;
+            min-height: 479px;
+        }
+
+        .extensionBtn {
+            padding: 20px 40px;
+            margin-top: 50px;
+        }
+
+        .customiseBlock {
+            padding: 140px 0;
+        }
+
+        .customise {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .customiseImg {
+            max-width: 714px;
+            min-height: 532px;
+        }
+
+        .customiseInfo {
+            max-width: 669px;
+        }
+
+        .customiseHead {
+            margin-bottom: 30px;
+        }  
+
+        .customiseHead::before {
+            content: '';
+            position: absolute;
+            left: -20px; bottom: -20px;
+            width: 70%;
+            height: 35px;
+            background-image: url('/assets/underline.png');
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+            display: block;
+        }
+
+        .customiseBtn {
+            padding: 20px 40px;
+            margin-top: 50px;
+        }
+
+        .planBlock {
+            padding: 140px 0;
+        }
+
+        .planHead {
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 30px;
+            margin: 0 auto;
+        }
+
+        .planHead::before {
+            content: '';
+            position: absolute;
+            right: 0; bottom: -70px;
+            width: 55%;
+            height: 85px;
+            background-image: url('/assets/underline.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            z-index: -1;
+            display: block;
+        }
+
+        .planBlockText {
+            text-align: center;
+            margin: 30px auto;
+            max-width: 1000px;
+        }
+
+        .planCards {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .planCard {
+            padding: 40px 44px;
+            border-radius: 10px;
+            border: 1px solid #FFE492;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            transition: all 0.3s ease; 
+        }
+
+        .planCard:hover {
+            background-color: #043873;
+            color: #fff;
+            border: none;
+            padding: 80px 44px;
+        }
+
+        .planCard:hover .planCardPrice {
+            color: #FFE492;
+        }
+
+        .planCard:hover .planCardListItem {
+            background-image: url('/assets/CheckedGolden.png');
+            background-size: 20px 20px;
+        }
+
+        .planCard:hover .planBtn {
+            background-color: #4F9CF9;
+            color: #fff;
+            border: none;
+        }
+
+        .planCard:hover .planBtn:hover {
+            background-color: #3878c7;
+        }
+
+        .planCardType {
+            display: block;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 36px;
+        }
+
+        .planCardText {
+            margin: 0;
+        }
+
+        .planCardPrice {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 100%;
+        }
+
+        .planCardList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 28px;
+            max-width: 384px;
+        }
+
+        .planCardListItem {
+            display: flex;
+            align-items: center;
+            min-height: 24px;
+            padding-left: 30px;
+            background-image: url('assets/Checked.png');
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            background-position: left center;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        .planBtn {
+            max-width: 170px;
+            padding: 16px 40px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: inherit;
+            letter-spacing: -2%;
+            background: none;
+            border: 1px solid #FFE492;
+        }
+
+        .everywhereBlock {
+            background-color: #043873;
+            color: #fff;
+            padding: 140px 0;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .everywhereBlock::before {
+            content: '';
+            position: absolute;
+            top: -140px; left: 0;
+            width: 100%;
+            height: 130%;
+            background-image: url('/assets/everywhereBG.png');
+            background-position: center left;
+            background-repeat: no-repeat;
+            background-size: 520px 900px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .everywhere {
+            max-width: 1064px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .everywhereHead {
+            margin-bottom: 30px;
+        }
+
+        .everywhereHead::before {
+            content: '';
+            position: absolute;
+            right: -40px;
+            bottom: -10px;
+            width: 320px;
+            height: 30px;
+            background-image: url('/assets/underlineBlue.png');
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            z-index: -1;
+            display: block;
+        }
+
+        .everywhereBtn {
+            padding: 20px 40px;
+            margin-top: 50px;
+        }
+
+        .dataBlock {
+            padding: 140px 0;
+        }
+        
+        .data {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dataHead {
+            margin-bottom: 30px;
+        }
+
+        .dataHead::before {
+            content: '';
+            position: absolute;
+            right: 260px;
+            bottom: -76px;
+            width: 360px;
+            height: 90px;
+            background-image: url('/assets/underline.png');
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            z-index: -1;
+            display: block;
+        }
+
+        .dataImg {
+            max-width: 664px;
+            height: 381px;
+        }
+
+        .sponsorsBlock {
+            padding: 140px 0;
+            text-align: center;
+        }
+
+        .sponsorsHead {
+            margin-bottom: 100px;
+        }
+
+        .sponsorsHead::before {
+            content: '';
+            position: absolute;
+            right: 490px; bottom: -75px;
+            width: 320px;
+            height: 95px;
+            background-image: url('/assets/underline.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            z-index: -1;
+            display: block;
+        }
+
+        .sponsorsList {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            justify-content: space-between;
+        }
+
+        .favoriteBlock {
+            background-color: #043873;
+            color: #fff;
+            background-image: url('/assets/FavoriteBg.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 747px;
+            padding: 140px 0;
+        }
+
+        .favorite {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .favoriteInfo {
+            max-width: 790px;
+        }
+
+    </style>
 </head>
-<body class="container">
+<body>
     <header class="header">
-        <div class="headerInner">
-            <a href="#" class="headLogo"></a>
+        <div class="headerInner container">
+            <a href="#" class="headLogo"><img src="/assets/Logo.png" alt="Whitepace"></a>
             <nav class="headNav">
                 <ul class="headNavList">
-                    <li class="headNavItem"><a href="#">Products</a></li>
-                    <li class="headNavItem"><a href="#">Solutions</a></li>
-                    <li class="headNavItem"><a href="#">Resources</a></li>
-                    <li class="headNavItem"><a href="#">Pricing</a></li>
+                    <li class="headNavItem"><a href="#" class="headNavLink">Products</a></li>
+                    <li class="headNavItem"><a href="#" class="headNavLink">Solutions</a></li>
+                    <li class="headNavItem"><a href="#" class="headNavLink">Resources</a></li>
+                    <li class="headNavItem"><a href="#" class="headNavLink">Pricing</a></li>
                 </ul>
             </nav>
             <div class="headBtnGroup">
@@ -31,159 +646,220 @@
     </header>
     <main>            
         <section class="whitepaceBlock">
-            <div class="whitepace">
+            <div class="whitepace container">
                 <div class="whitepaceInfo">
+                    <h2 class="whitepaceHead">
+                        Get More Done with whitepace
+                    </h2>
                     <p class="whitepaceInfoText">
+                        Project management software that enables your teams to collaborate, plan, analyze and manage everyday tasks
                     </p>
-                    <button class="whitepaceInfoBtn">                   
+                    <button class="whitepaceBtn Btn">
+                        Try Whitepace free                   
                     </button>
                 </div>
-                <img src="" alt="whitepaceImg" class="whitepaceImg">
+                <img src="/assets/PlugImg.png" alt="whitepaceImg" class="whitepaceImg">
             </div> 
         </section>
         <section class="managementBlock">
-            <div class="management">
+            <div class="management container">
                 <div class="managementInfo">
+                    <h2 class="managementHead sectionHead">Project Management</h2>
                     <p class="managementInfoText">
+                        Images, videos, PDFs and audio files are supported. Create math expressions and diagrams directly from the app.
+                        Take photos with the mobile app and save them to a note.
                     </p>
-                    <button class="managementInfoBtn">                   
+                    <button class="managementInfoBtn Btn">
+                        Get Started             
                     </button>
                 </div>
-                <img src="" alt="img" class="managementImg">
+                <img src="/assets/PlugImg.png" alt="managementImg" class="managementImg">
             </div>
         </section>
         <section class="togetherBlock">
-            <div class="together">
-                <img src="" alt="togetherImg" class="togetherImg">
+            <div class="together container">
+                <img src="/assets/WorkTogetherImage.png" alt="togetherImg" class="togetherImg">
                 <div class="togetherInfo">
+                    <h2 class="togetherHead sectionHead">Work together</h2>
                     <p class="togetherInfoText">
+                        With whitepace, share your notes with your colleagues and collaborate on them.
+                        You can also publish a note to the internet and share the URL with others.
                     </p>
-                    <button class="togetherInfoBtn">                   
+                    <button class="togetherBtn Btn">
+                        Try it now                  
                     </button>
                 </div>
             </div>
         </section>
         <section class="extensionBlock">
-            <div class="extension">
-                <div class="extensionInfo">   
+            <div class="extension container">
+                <div class="extensionInfo">
+                    <h2 class="extensionHead sectionHead">Use as Extension</h2>
                     <p class="extensionInfoText">
+                        Use the web clipper extension, available on Chrome and Firefox, to save web pages or take screenshots as notes.
                     </p>
-                    <button class="extensionInfoBtn">                   
+                    <button class="extensionBtn Btn">
+                        Let’s Go              
                     </button>
                 </div>
-                <img src="" alt="img" class="extensionImg">
+                <img src="/assets/PlugImg.png" alt="img" class="extensionImg">
             </div>
         </section>
         <section class="customiseBlock">
-            <div class="customise">
-                <img src="" alt="customizeImg" class="customiseImg">
+            <div class="customise container">
+                <img src="/assets/PlugImg.png" alt="customizeImg" class="customiseImg">
                 <div class="customiseInfo">
+                    <h2 class="customiseHead sectionHead">Customise it to<br> your needs</h2>
                     <p class="customiseInfoText">
+                        Customise the app with plugins, custom themes and multiple text editors (Rich Text or Markdown). Or create your own scripts and plugins using the Extension API.
                     </p>
-                    <button class="customiseInfoBtn">                   
+                    <button class="customiseBtn Btn">
+                        Let's Go                  
                     </button>
                 </div>
             </div>
         </section>
-        <section class="planBlock">
+        <section class="planBlock container">
+            <h2 class="planHead sectionHead">Choose Your Plan</h2>
             <p class="planBlockText">
+                Whether you want to get organized, keep your personal life on track, or boost workplace productivity, Evernote has the right plan for you.
             </p>
             <div class="planCards">
-                <div class="planCard planCardWhite">
-                    <span class="planCardWhiteSpan"></span>
-                    <strong class="planCardWhitePrice "></strong>
-                    <ul class="planCardWhiteList">
-                        price
-                        <li class="planCardListItem">1</li>
-                        <li class="planCardListItem">2</li>
-                        <li class="planCardListItem">3</li>
-                        <li class="planCardListItem">4</li>
-                        <li class="planCardListItem">5</li>
-                        <li class="planCardListItem">6</li>
+                <div class="planCard">
+                    <strong class="planCardType">Free</strong>
+                    <strong class="planCardPrice">$0</strong>
+                    <p class="planCardText">Capture ideas and find them quickly</p>
+                    <ul class="planCardList">
+                        <li class="planCardListItem">Sync unlimited devices</li>
+                        <li class="planCardListItem">10 GB monthly uploads
+                        </li>
+                        <li class="planCardListItem">200 MB max. note size
+                        </li>
+                        <li class="planCardListItem">Customize Home dashboard and access extra widgets</li>
+                        <li class="planCardListItem">Connect primary Google Calendar account
+                        </li>
+                        <li class="planCardListItem">Add due dates, reminders, and notifications to your tasks
+                        </li>
                     </ul>
-                    <button class="planCardWhiteBtn"></button>
+                    <button class="planBtn planBtnWhite">Get Started</button>
                 </div>
-                <div class="planCard planCardBlue">
-                    <span class="planCardBlueSpan"></span>
-                    <strong class="planCardBluePrice "></strong>
-                    <ul class="planCardBlueList">
-                        price
-                        <li class="planCardListItem">1</li>
-                        <li class="planCardListItem">2</li>
-                        <li class="planCardListItem">3</li>
-                        <li class="planCardListItem">4</li>
-                        <li class="planCardListItem">5</li>
-                        <li class="planCardListItem">6</li>
+                <div class="planCard">
+                    <strong class="planCardType">Personal</strong>
+                    <strong class="planCardPrice planCardPriceBlue">$11.99</strong>
+                    <p class="planCardText">Keep home and family on track</p>
+                    <ul class="planCardList">
+                        <li class="planCardListItem">Sync unlimited devices</li>
+                        <li class="planCardListItem">10 GB monthly uploads
+                        </li>
+                        <li class="planCardListItem">200 MB max. note size
+                        </li>
+                        <li class="planCardListItem">Customize Home dashboard and access extra widgets</li>
+                        <li class="planCardListItem">Connect primary Google Calendar account
+                        </li>
+                        <li class="planCardListItem">Add due dates, reminders, and notifications to your tasks
+                        </li>
                     </ul>
-                    <button class="planCardBlueBtn"></button>
+                    <button class="planBtn planBtnWhite">Get Started</button>
                 </div>
-                <div class="planCard planCardBlue">
-                    <span class="planCardWhiteSpan"></span>
-                    <strong class="planCardWhitePrice "></strong>
-                    <ul class="planCardWhiteList">
-                        price
-                        <li class="planCardListItem">1</li>
-                        <li class="planCardListItem">2</li>
-                        <li class="planCardListItem">3</li>
-                        <li class="planCardListItem">4</li>
-                        <li class="planCardListItem">5</li>
-                        <li class="planCardListItem">6</li>
+                <div class="planCard">
+                    <strong class="planCardType">Organization</strong>
+                    <strong class="planCardPrice">$49.99</strong>
+                    <p class="planCardText">Capture ideas and find them quickly</p>
+                    <ul class="planCardList">
+                        <li class="planCardListItem">Sync unlimited devices</li>
+                        <li class="planCardListItem">10 GB monthly uploads
+                        </li>
+                        <li class="planCardListItem">200 MB max. note size
+                        </li>
+                        <li class="planCardListItem">Customize Home dashboard and access extra widgets</li>
+                        <li class="planCardListItem">Connect primary Google Calendar account
+                        </li>
+                        <li class="planCardListItem">Add due dates, reminders, and notifications to your tasks
+                        </li>
                     </ul>
-                    <button class="planCardWhiteBtn"></button>
+                    <button class="planBtn planBtnWhite">Get Started</button>
                 </div>
             </div>
         </section>
         <section class="everywhereBlock">
-            <div class="everywhere">
+            <div class="everywhere container">
+                <h2 class="everywhereHead sectionHead">Your work, everywhere you are</h2>
                 <p class="everywhereText">
+                    Access your notes from your computer, phone or tablet by synchronising with various services, 
+                    including whitepace, Dropbox and OneDrive. The app is available on Windows, macOS, Linux, Android and iOS. 
+                    A terminal app is also available!
                 </p>
-                <button class="everywhereBtn">                   
+                <button class="everywhereBtn Btn">
+                    Try Taskey              
                 </button>
             </div>
         </section>
         <section class="dataBlock">
-            <div class="data">
-                <div class="dataInfo">   
+            <div class="data container">
+                <div class="dataInfo">  
+                    <h2 class="dataHead sectionHead">100% your data</h2> 
                     <p class="dataInfoText">
-                    <button class="extensionInfoBtn">                   
+                        The app is open source and your notes are saved to an open format, so you'll always
+                        have access to them. Uses End-To-End Encryption (E2EE) to secure your notes and ensure no-one but yourself can access them.
+                    </p>
+                    <button class="dataBtn Btn">
+                        Read more              
                     </button>
                 </div>
-                <img src="" alt="data" alt="dataImg" class="dataImg">
+                <img src="/assets/DataImg.png" alt="data" alt="dataImg" class="dataImg">
             </div>
         </section>
         <section class="sponsorsBlock">
-             <h2 class="subHeader"></h2>
-             <ul class="sponsorsList">
-                <li class="sponsorsListItem"><a href="" class="sponsorsListLink"></a></li>
-                <li class="sponsorsListItem"><a href="" class="sponsorsListLink"></a></li>
-                <li class="sponsorsListItem"><a href="" class="sponsorsListLink"></a></li>
-                <li class="sponsorsListItem"><a href="" class="sponsorsListLink"></a></li>
-             </ul>
+             <div class="sponsors container">
+                <h2 class="sponsorsHead sectionHead">Our sponsors</h2>
+                <ul class="sponsorsList">
+                    <li class="sponsorsListItem"><img src="/assets/Apple.svg" alt="Apple"></li>
+                    <li class="sponsorsListItem"><img src="/assets/Microsoft.png" alt="Microsoft"></li>
+                    <li class="sponsorsListItem"><img src="/assets/Slack.png" alt="Slack"></li>
+                    <li class="sponsorsListItem"><img src="/assets/Google.png" alt="Google"></li>
+                </ul>
+             </div>
         </section>
         <section class="favoriteBlock">
-            <div class="favorite">
-                <img src="" alt="favoriteImg" class="favoriteImg">
+            <div class="favorite container">
+                <img src="/assets/FavoriteImg.png" alt="favoriteImg" class="favoriteImg">
                 <div class="favoriteInfo">
-                    <p class="favoriteInfoText">
+                    <h2 class="favoriteHead sectionHead">Work with Your Favorite Apps Using whitepace</h2>
+                    <p class="favoriteText">
+                        Whitepace teams up with your favorite software. Integrate with over 1000+ apps with Zapier to have all the tools you need for your project success.
                     </p>
-                    <button class="favoriteInfoBtn">                   
+                    <button class="favoriteBtn Btn">    
+                        Read more               
                     </button>
                 </div>
             </div>
         </section>
-        <section class="clientsBlock">
-            <h2 class="subHeader"></h2>
+        <section class="clientsBlock container">
+            <h2 class="clientsHead sectionHead"></h2>
             <div class="clientsCards">
                 <div class="clientsCard">
                     <div class="clientCardTop">
-                        <img src="" alt="" class="clientCardImg">
+                        <img src="/assets/Quote.svg" alt="quote" class="clientCardImg">
+                        <p class="clientCardTopText">
+                        </p>
+                    </div>
+                    <div class="clientCardBottom">
+                        <img src="/assets/Quote.svg" alt="quote" class="clientCardImg">
+                        <p class="clientCardBottomText">
+                            <strong class="clientCardStrong         "></strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="clientsCard">
+                    <div class="clientCardTop">
+                        <img src="/assets/Quote.svg" alt="quote" class="clientCardImg">
                         <p class="clientCardTopText">
                         </p>
                     </div>
                     <div class="clientCardBottom">
                         <img src="" alt="" class="clientCardAvatar">
                         <p class="clientCardBottomText">
-                            <strong class="clientCardStrong         "></strong>
+                            <strong class="clientCardStrong"></strong>
                         </p>
                     </div>
                 </div>
@@ -196,20 +872,7 @@
                     <div class="clientCardBottom">
                         <img src="" alt="" class="clientCardAvatar">
                         <p class="clientCardBottomText">
-                            <strong class="clientCardStrong         "></strong>
-                        </p>
-                    </div>
-                </div>
-                <div class="clientsCard">
-                    <div class="clientCardTop">
-                        <img src="" alt="" class="clientCardImg">
-                        <p class="clientCardTopText">
-                        </p>
-                    </div>
-                    <div class="clientCardBottom">
-                        <img src="" alt="" class="clientCardAvatar">
-                        <p class="clientCardBottomText">
-                            <strong class="clientCardStrong         "></strong>
+                            <strong class="clientCardStrong"></strong>
                         </p>
                     </div>
                </div>
@@ -218,7 +881,7 @@
        <section class="todayBlock">
             <div class="todayInfo">
                 <p class="todayText"></p>
-                <button class="todayBtn"></button>
+                <button class="todayBtn Btn"></button>
                 <ul class="todayList">
                     <li class="todayListItem"><img src="" alt="" class="todayListImg"></li>
                     <li class="todayListItem"><img src="" alt="" class="todayListImg"></li>
@@ -249,12 +912,12 @@
                     <h3 class="todayNavHead"></h3>
                     <p class="todayNavText"></p>
                     </p>
-                    <button class="todayNavBtn"></button>
+                    <button class="todayNavBtn Btn"></button>
                 </div>
             </div>
        </section>
        <footer class="footer">
-            <button class="changeLangBtn"></button>
+            <button class="changeLangBtn Btn"></button>
             <nav class="footerNav">
                 <ul class="footerNavList">
                     <li class="footerNavItem"><a href="#" class="footerNavLink">Products</a></li>
