@@ -24,6 +24,11 @@
             line-height: 30px        
         }
 
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
         .container {
             max-width: 1480px;
             margin: 0 auto;
@@ -78,8 +83,7 @@
             padding: 0;
         }
 
-        .headNavLink {
-            text-decoration: none;
+        .headNavBtn {
             color: #fff;
             font-size: 18px;
             font-weight: 500;
@@ -87,15 +91,56 @@
             margin-right: 32px;
             display: flex;
             align-items: center;
+            border: none;
+            background: none;
+            font-family: inherit;
+            cursor: pointer;
         }
 
-        .headNavLink::after {
+        .headNavBtn::after {
             content: '';
             display: inline-block;
             width: 10px; 
             height: 5px; 
             background: url('/assets/ArrowDown.png') center center no-repeat;
             margin-left: 10px;
+        }
+
+        .headNavBtn:hover {
+            color: #A7CEFC;
+        }
+
+        .headNavDropdown {
+            position: relative;
+        }
+
+        .headNavMenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            padding: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: none;
+            min-width: 160px;
+            z-index: 1000;
+            list-style: none;
+        }
+
+        .headNavMenu li {
+            padding: 8px 20px;
+        }
+
+        .headNavMenu li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            display: block;
+        }
+
+        .headNavMenu li:hover {
+            background-color: #f0f0f0;
         }
 
         .headBtnGroup {
@@ -142,6 +187,10 @@
             height: 10px; 
             background: url('/assets/ArrowRight.png') center center no-repeat;
             margin-left: 10px;
+        }
+
+        .headBtnTry:hover {
+            background-color: #3c8beb;
         }
 
         .whitepaceBlock {
@@ -579,13 +628,14 @@
         }
 
         .sponsorsHead {
-            margin-bottom: 100px;
+            margin: auto;
+            max-width: 600px;
         }
 
         .sponsorsHead::before {
             content: '';
             position: absolute;
-            right: 490px; bottom: -75px;
+            right: 55px; bottom: -75px;
             width: 320px;
             height: 95px;
             background-image: url('/assets/underline.png');
@@ -596,6 +646,7 @@
         }
 
         .sponsorsList {
+            margin-top: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -624,6 +675,166 @@
             max-width: 790px;
         }
 
+        .clientsBlock {
+            padding: 140px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .clientsHead {
+            font-size: 70px;
+            font-weight: 700;
+            line-height: 84px;
+            text-align: center;
+            margin: 60px auto;
+            max-width: 800px;
+        }
+
+        .clientsHead::before {
+            content: '';
+            position: absolute;
+            right: -35px; bottom: -60px;
+            width: 260px;
+            height: 110px;
+            background-image: url('/assets/underline.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            z-index: -1;
+            display: block;
+        }
+
+        .clientsCards {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .clientsCard {
+            color: #fff;
+            background-color: #4F9CF9;
+            border-radius: 10px;
+            padding: 60px 40px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .clientsCard:hover {
+            background-color: #fff;
+            color: #212529;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .clientsCard:hover .clientCardStrong,
+        .clientsCard:hover .clientCardBottomText {
+            color: #212529;
+        }
+
+        .clientsCard:hover .clientCardImg {
+            filter: brightness(0) saturate(100%) invert(24%) sepia(93%) saturate(1899%) hue-rotate(192deg) brightness(94%) contrast(95%);
+        }
+
+        .cardLine {
+            display: block;
+            height: 2px;
+            border-bottom: 1px solid white;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .clientsCardAvatar {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+        }
+
+        .clientCardBottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .clientCardBottomText {
+            font-size: 16px;
+        }
+
+        .clientCardStrong {
+            display: block;
+            margin-bottom: 15px;
+            color: #212529;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 36px;
+        }
+
+        .cardsBtns {
+            cursor: pointer;
+            margin-top: 50px;
+        }
+
+        .cardsBtn {
+            background-color: #4F9CF9;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cardsBtn:hover {
+            background-color: #043873;
+        }
+
+        .cardsBtn.selected {
+            background-color: #043873;
+        }
+
+        .todayBlock {
+            background-color: #043873;
+            color: #fff;
+            padding: 140px 0;
+        }
+
+        .todayInfo {
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 0 auto;
+            gap: 24px;
+        }
+
+        .todayHead {
+            margin-bottom: 30px;
+        }
+
+        .todayText {
+            font-size: 24px;
+            line-height: 32px;
+        }
+
+        .todayBtn {
+            margin: 0 auto;
+        }
+
+        .todayList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .todayListImg {
+            width: 60px;
+            height: 60px;
+        }
+
     </style>
 </head>
 <body>
@@ -632,11 +843,41 @@
             <a href="#" class="headLogo"><img src="/assets/Logo.png" alt="Whitepace"></a>
             <nav class="headNav">
                 <ul class="headNavList">
-                    <li class="headNavItem"><a href="#" class="headNavLink">Products</a></li>
-                    <li class="headNavItem"><a href="#" class="headNavLink">Solutions</a></li>
-                    <li class="headNavItem"><a href="#" class="headNavLink">Resources</a></li>
-                    <li class="headNavItem"><a href="#" class="headNavLink">Pricing</a></li>
-                </ul>
+                    <li class="headNavItem headNavDropdown">
+                      <button class="headNavBtn">Products</button>
+                      <ul class="headNavMenu">
+                        <li><a href="#">Product 1</a></li>
+                        <li><a href="#">Product 2</a></li>
+                        <li><a href="#">Product 3</a></li>
+                      </ul>
+                    </li>
+                    <li class="headNavItem headNavDropdown">
+                      <button class="headNavBtn">Solutions</button>
+                      <ul class="headNavMenu">
+                        <li><a href="#">Solution 1</a></li>
+                        <li><a href="#">Solution 2</a></li>
+                        <li><a href="#">Solution 3</a></li>
+                      </ul>
+                    </li>
+                  
+                    <li class="headNavItem headNavDropdown">
+                      <button class="headNavBtn">Resources</button>
+                      <ul class="headNavMenu">
+                        <li><a href="#">Resource 1</a></li>
+                        <li><a href="#">Resource 2</a></li>
+                        <li><a href="#">Resource 3</a></li>
+                      </ul>
+                    </li>
+                  
+                    <li class="headNavItem headNavDropdown">
+                      <button class="headNavBtn">Pricing</button>
+                      <ul class="headNavMenu">
+                        <li><a href="#">Price 1</a></li>
+                        <li><a href="#">Price 2</a></li>
+                        <li><a href="#">Price 3</a></li>
+                      </ul>
+                    </li>
+                  </ul>                  
             </nav>
             <div class="headBtnGroup">
                 <button class="headBtn headBtnLogin">Login</button>
@@ -835,18 +1076,21 @@
             </div>
         </section>
         <section class="clientsBlock container">
-            <h2 class="clientsHead sectionHead"></h2>
+            <h2 class="clientsHead sectionHead">What Our Clients Says</h2>
             <div class="clientsCards">
                 <div class="clientsCard">
                     <div class="clientCardTop">
                         <img src="/assets/Quote.svg" alt="quote" class="clientCardImg">
                         <p class="clientCardTopText">
+                            Whitepate is designed as a collaboration tool for businesses that is a full project management solution.
                         </p>
                     </div>
+                    <span class="cardLine"></span>
                     <div class="clientCardBottom">
-                        <img src="/assets/Quote.svg" alt="quote" class="clientCardImg">
+                        <img src="/assets/Avatar1.png" alt="quote" class="clientsCardAvatar">
                         <p class="clientCardBottomText">
-                            <strong class="clientCardStrong         "></strong>
+                            <strong class="clientCardStrong">Oberon Shaw, MCH</strong>
+                            Head of Talent Acquisition, North America
                         </p>
                     </div>
                 </div>
@@ -854,38 +1098,51 @@
                     <div class="clientCardTop">
                         <img src="/assets/Quote.svg" alt="quote" class="clientCardImg">
                         <p class="clientCardTopText">
+                            Whitepate is designed as a collaboration tool for businesses that is a full project management solution.
                         </p>
                     </div>
+                    <span class="cardLine"></span>
                     <div class="clientCardBottom">
-                        <img src="" alt="" class="clientCardAvatar">
+                        <img src="/assets/Avatar2.png" alt="avatar1" class="clientsCardAvatar">
                         <p class="clientCardBottomText">
-                            <strong class="clientCardStrong"></strong>
+                            <strong class="clientCardStrong">Oberon Shaw, MCH</strong>
+                            Head of Talent Acquisition, North America
                         </p>
                     </div>
                 </div>
                 <div class="clientsCard">
                     <div class="clientCardTop">
-                        <img src="" alt="" class="clientCardImg">
+                        <img src="/assets/Quote.svg" alt="avatar2" class="clientCardImg">
                         <p class="clientCardTopText">
+                            Whitepate is designed as a collaboration tool for businesses that is a full project management solution.
                         </p>
                     </div>
+                    <span class="cardLine"></span>
                     <div class="clientCardBottom">
-                        <img src="" alt="" class="clientCardAvatar">
+                        <img src="/assets/Avatar3.png" alt="avatar3" class="clientsCardAvatar">
                         <p class="clientCardBottomText">
-                            <strong class="clientCardStrong"></strong>
+                            <strong class="clientCardStrong">Oberon Shaw, MCH</strong>
+                            Head of Talent Acquisition, North America
                         </p>
                     </div>
                </div>
             </div>
+            <div class="cardsBtns">
+                <button class="cardsBtn"></button>
+                <button class="cardsBtn selected"></button>
+                <button class="cardsBtn"></button>
+            </div>
        </section>
        <section class="todayBlock">
             <div class="todayInfo">
-                <p class="todayText"></p>
-                <button class="todayBtn Btn"></button>
+                <h2 class="todayHead sectionHead">Try Whitepace today</h2>
+                <p class="todayText">Get started for free. Add your whole team as your needs grow.</p>
+                <button class="todayBtn Btn">Try Taskey free</button>
+                <p class="todayText">On a big team? Contact sales</p>
                 <ul class="todayList">
-                    <li class="todayListItem"><img src="" alt="" class="todayListImg"></li>
-                    <li class="todayListItem"><img src="" alt="" class="todayListImg"></li>
-                    <li class="todayListItem"><img src="" alt="" class="todayListImg"></li>
+                    <li class="todayListItem"><img src="/assets/WhiteApple.svg" alt="ios" class="todayListImg"></li>
+                    <li class="todayListItem"><img src="/assets/Windows.png" alt="windows" class="todayListImg"></li>
+                    <li class="todayListItem"><img src="/assets/Android.png" alt="android" class="todayListImg"></li>
                 </ul>
             </div>
             <div class="todayNav">
@@ -933,5 +1190,41 @@
             </nav>
        </footer>
     </main>
+
+    <script>
+        const cardsBtns = document.querySelectorAll('.cardsBtn');
+
+        cardsBtns.forEach(cardsBtn => {
+            cardsBtn.addEventListener('click', () => {
+                cardsBtns.forEach(b => b.classList.remove('selected'));
+                cardsBtn.classList.add('selected');
+            });
+        });
+
+        const dropdowns = document.querySelectorAll('.headNavDropdown');
+
+        dropdowns.forEach(dropdown => {
+            const btn = dropdown.querySelector('.headNavBtn');
+            const menu = dropdown.querySelector('.headNavMenu');
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation(); 
+
+                document.querySelectorAll('.headNavMenu').forEach(m => {
+                    if (m !== menu) m.style.display = 'none';
+                });
+
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        document.addEventListener('click', () => {
+        document.querySelectorAll('.headNavMenu').forEach(menu => {
+            menu.style.display = 'none';
+        });
+        });
+
+    </script>
+
 </body> 
 </html> 
